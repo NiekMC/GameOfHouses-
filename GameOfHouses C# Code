@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace The_Game_of_Houses_
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int money = 10;
+            int houses = 0;
+            int housePrice = 5;
+            String snewHouses;
+            int inewHouses;
+            int houseRevenue = 3;
+            int turn = 1;
+
+            Console.WriteLine("Rules and explanations!");
+            Console.WriteLine("You have 10 rounds");
+            Console.WriteLine("You have 0 houses");
+            Console.WriteLine("You start of with 10 euro's");
+            Console.WriteLine("Each house costs 5 euro's");
+            Console.WriteLine("Each round you make 3 euro's per house");
+            Console.WriteLine("\n" + "Lets begin!");
+
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
+            Console.Clear();
+
+            do
+            {
+                inewHouses = 0;
+                Console.WriteLine("Round " + turn);
+                Console.WriteLine("You currently have " + money + " euro's and " + houses + " houses!");
+
+                Console.WriteLine("How many houses would you like to buy?");
+                snewHouses = Console.ReadLine();
+                try
+                {
+                    inewHouses = int.Parse(snewHouses);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Oh god, the bills!, jk something went wrong!");
+                }
+
+                if ((inewHouses * housePrice) > money)
+                {
+                    Console.WriteLine("\nYou don't have enought money!");
+                }
+                else
+                {
+                    Console.WriteLine("You bought " + snewHouses + " houses!\n");
+                    houses = houses + inewHouses;
+                    
+                    turn++;
+
+                    money = money - inewHouses * housePrice;
+                    money = money + (houses * houseRevenue);
+                }
+            } while (!(turn == 10));
+
+            Console.WriteLine("Nice! You finished the game!");
+            Console.WriteLine("You finished the game with " + houses + " houses and " + money + " euro's!");
+            Console.WriteLine("Thanks for playing!");
+            
+            
+            
+            
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
+        }
+    }
+}
